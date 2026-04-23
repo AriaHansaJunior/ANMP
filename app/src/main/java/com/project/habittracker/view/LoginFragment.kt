@@ -1,0 +1,37 @@
+package com.project.habittracker.view
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import com.project.habittracker.databinding.FragmentLoginBinding
+
+class LoginFragment : Fragment() {
+
+    private lateinit var binding: FragmentLoginBinding
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentLoginBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.btnLogin.setOnClickListener {
+            val username = binding.edtUsername.text.toString()
+            val password = binding.edtPassword.text.toString()
+
+            if (username == "student" && password == "123") {
+                Toast.makeText(requireContext(), "Login Success", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(requireContext(), "Username / Password salah", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+}
